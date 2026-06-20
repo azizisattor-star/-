@@ -1,0 +1,59 @@
+{
+  "entities": {
+    "Player": {
+      "title": "Player",
+      "description": "Represents an active player in the room.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "role": { "type": "string", "enum": ["host", "guest"] }
+      },
+      "required": ["id", "name", "role"]
+    },
+    "RoomState": {
+      "title": "RoomState",
+      "description": "Represents the active synchronized state of a game room.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "status": { "type": "string", "enum": ["waiting", "playing", "ended"] },
+        "players": { "type": "array" },
+        "currentTurnId": { "type": "string" },
+        "currentChoice": { "type": "string", "enum": ["truth", "dare", null] },
+        "currentTask": { "type": "string" },
+        "taskStatus": { "type": "string", "enum": ["pending", "completed", "surrendered", null] },
+        "gameLevel": { "type": "string", "enum": ["hot", "dirty", "extreme"] },
+        "scores": { "type": "object" },
+        "taskTimerEnd": { "type": "number" },
+        "createdAt": { "type": "number" },
+        "lastActive": { "type": "number" }
+      },
+      "required": ["id", "status", "players", "currentTurnId", "gameLevel", "scores", "createdAt", "lastActive"]
+    },
+    "ChatMessage": {
+      "title": "ChatMessage",
+      "description": "A secure, anonymous message sent in the chat subcollection.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "senderId": { "type": "string" },
+        "senderName": { "type": "string" },
+        "text": { "type": "string" },
+        "timestamp": { "type": "number" },
+        "isSystem": { "type": "boolean" }
+      },
+      "required": ["senderId", "senderName", "text", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/rooms/{roomId}": {
+      "schema": "RoomState",
+      "description": "Dynamic game room state shared between two partners"
+    },
+    "/rooms/{roomId}/messages/{messageId}": {
+      "schema": "ChatMessage",
+      "description": "Anonymous chat message subcollection for immediate sync"
+    }
+  }
+}

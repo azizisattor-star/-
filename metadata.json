@@ -1,0 +1,6 @@
+{
+  "name": "Искушение для двоих",
+  "description": "Эротическая игра Правда или Действие для влюбленных пар с синхронизацией в реальном времени и приватным чатом.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

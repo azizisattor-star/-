@@ -1,0 +1,21 @@
+{
+  "short_name": "Искушение",
+  "name": "Искушение для двоих",
+  "icons": [
+    {
+      "src": "https://img.icons8.com/color/192/000000/hearts.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "https://img.icons8.com/color/512/000000/hearts.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#171717",
+  "theme_color": "#e11d48",
+  "display": "standalone",
+  "orientation": "portrait"
+}
